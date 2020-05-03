@@ -9,11 +9,17 @@ class Counter extends Component {
       { id: 3, name: "tag3" },
     ],
   };
+
   render() {
     return (
       <div>
         <span className={this.getBadgeClass()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
         {this.renderTags()}
         {this.state.tags.length === 0 && "Please create new tags"}
       </div>
@@ -41,6 +47,10 @@ class Counter extends Component {
     const { count } = this.state;
     return count === 0 ? "Zero" : count;
   }
+
+  handleIncrement = () => {
+    console.log("increment clicked", this);
+  };
 }
 
 export default Counter;
